@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "77272223741",
+    "firebase_url": "https://data-ez-condo-default-rtdb.firebaseio.com",
+    "project_id": "data-ez-condo",
+    "storage_bucket": "data-ez-condo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77272223741:android:057bbff400c07276249394",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77272223741-kdvf32dj9tlp6dk4dooe3kivqlcjcslg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSbchqb0T5rv7dX6wCGQ6NCGwB9zzc30U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77272223741-kdvf32dj9tlp6dk4dooe3kivqlcjcslg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
