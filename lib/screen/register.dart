@@ -22,9 +22,8 @@ class _RegisterscreenState extends State<Registerscreen> {
   DataUser mydatauser = DataUser();
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   CollectionReference _userCollection =
-      FirebaseFirestore.instance.collection("user");
-      FirebaseAuth auth = FirebaseAuth.instance;
-  
+      FirebaseFirestore.instance.collection("user-linecondo-A");
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   // TextEditingController email = TextEditingController();
   // TextEditingController password = TextEditingController();
@@ -224,12 +223,15 @@ class _RegisterscreenState extends State<Registerscreen> {
                             if (formKey.currentState!.validate()) {
                               formKey.currentState?.save();
                               try {
-                                await FirebaseAuth.instance
+                                UserCredential user = await FirebaseAuth
+                                    .instance
                                     .createUserWithEmailAndPassword(
                                         email: profile.email,
                                         password: profile.password);
+                                print(user.user!.uid);
 
-                                _userCollection.add({
+                                _userCollection.doc(user.user!.uid).set({
+                                  "role": mydatauser.role,
                                   "username": mydatauser.username,
                                   "room": mydatauser.roomuser,
                                   "phonenumber": mydatauser.phonenumber

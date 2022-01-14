@@ -13,11 +13,17 @@ class Profile {
 }
 
 class DataUser {
+  var role;
   var username;
   var roomuser;
   var phonenumber;
 
-  DataUser({this.username, this.roomuser, this.phonenumber});
+  DataUser({
+    this.role,
+    this.username,
+    this.roomuser,
+    this.phonenumber,
+  });
 }
 
 Future<void> userSetup(var user) async {
@@ -27,3 +33,4 @@ Future<void> userSetup(var user) async {
   var uid = auth.currentUser!.uid.toString();
   return;
 }
+

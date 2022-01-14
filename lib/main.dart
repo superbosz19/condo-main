@@ -1,9 +1,20 @@
 import 'package:auth/auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/contants/constants.dart';
 import 'package:flutter_application_1/screen/login.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyCc_AHbw04kfodsawgTPHgyeHu2tDYkEQI", // Your apiKey
+      appId: "1:570129048847:web:5f1c8792e2e2d84f9e4a7a", // Your appId
+      messagingSenderId: "570129048847", // Your messagingSenderId
+      projectId: "dark-form-307608", // Your projectId
+    ),
+  );
+
   runApp(const MyApp());
 }
 

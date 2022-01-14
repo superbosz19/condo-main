@@ -58,7 +58,9 @@ class _ViewscreenState extends State<Viewscreen> {
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("user").snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection("user-linecondo-A")
+            .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
             return Center(
@@ -185,9 +187,11 @@ class _ViewscreenState extends State<Viewscreen> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: IconButton(
-                                    icon: Icon(Icons.delete_rounded, color: Colors.red[300],),
-                                    onPressed: () {},
-                                  ),
+                                      icon: Icon(
+                                        Icons.delete_rounded,
+                                        color: Colors.red[300],
+                                      ),
+                                      onPressed: () {}),
                                 ),
                               ],
                             )

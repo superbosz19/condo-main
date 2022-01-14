@@ -1,11 +1,14 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors, duplicate_ignore
 
+import 'package:auth/auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/contants/constants.dart';
 import 'package:flutter_application_1/screen/profile.dart';
 import 'package:flutter_application_1/screen/register.dart';
+import 'package:flutter_application_1/screen/view_charger.dart';
 import 'package:flutter_application_1/screen/view_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -20,7 +23,8 @@ class _LoginscreenState extends State<Loginscreen> {
   Profile profile = Profile();
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   final formKey = GlobalKey<FormState>();
-
+ 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,6 +140,8 @@ class _LoginscreenState extends State<Loginscreen> {
                                 password: profile.password)
                             .then((value) {
                           formKey.currentState!.reset();
+
+
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (context) {
                             return Viewscreen();
@@ -256,3 +262,12 @@ Widget input(String hint, bool pass, bool emailkey, bool hintpass) {
     ),
   );
 }
+
+// Future checkAuth(BuildContext context) async {
+//     FirebaseUser user = await FirebaseAuth.instance.currentUser();
+//     if (user != null) {
+//       print("Already singed-in with");
+//       Navigator.pushReplacement(
+//           context, MaterialPageRoute(builder: (context) =>Viewcharger(user)));
+//     }
+//   }
