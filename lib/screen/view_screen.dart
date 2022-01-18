@@ -67,7 +67,8 @@ class _ViewscreenState extends State<Viewscreen> {
               child: CircularProgressIndicator(),
             );
           }
-          return Column(
+          return 
+          Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
