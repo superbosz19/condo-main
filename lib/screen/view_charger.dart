@@ -65,13 +65,22 @@ class _ViewchargerState extends State<Viewcharger> {
               child: CircularProgressIndicator(),
             );
           }
+          List<String> chargersId = ['GREY_0008', 'GREY_0009'];
+          //print(snapshot.data!.docs);
+          List<dynamic> usechargers = [];
+          for (var i = 0; i < snapshot.data!.docs.length; i++) {
+            if (chargersId.contains(snapshot.data?.docs[i].id)) {
+              //print(snapshot.data!.docs[i].id);
+              usechargers.add(snapshot.data?.docs[i]);
+            }
+          }
           return ListView.builder(
-            itemCount: 1,
+            itemCount: usechargers.length,
             itemBuilder: (context, int index) {
-              final DocumentSnapshot documentSnapshot = snapshot.data!.docs[5];
-              final DocumentSnapshot documentSnapshot1 = snapshot.data!.docs[6];
-              print(documentSnapshot["chargerID"]);
-              print(documentSnapshot["chargerStatus"]);
+              final DocumentSnapshot usecharger = usechargers[index];
+
+              // print(documentSnapshot["chargerID"]);
+              // print(documentSnapshot["chargerStatus"]);
               return //Container(
                   //   child: Text(documentSnapshot["chargerID"]),
                   // );
@@ -110,7 +119,7 @@ class _ViewchargerState extends State<Viewcharger> {
                                   padding: const EdgeInsets.only(
                                       right: 30.0, top: 20.0),
                                   child: Text(
-                                    documentSnapshot["chargerID"],
+                                    usecharger["chargerID"],
                                     style: TextStyle(
                                         color: kPrimaryColor,
                                         fontWeight: FontWeight.bold,
@@ -123,7 +132,7 @@ class _ViewchargerState extends State<Viewcharger> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       right: 20.0, top: 5.0),
-                                  child: Text(documentSnapshot["locationID"]),
+                                  child: Text(usecharger["locationID"]),
                                 ),
                               ],
                             ),
@@ -151,104 +160,13 @@ class _ViewchargerState extends State<Viewcharger> {
                                     padding: EdgeInsets.all(5),
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                            width: 1, color: kPrimaryColor),
+                                            width: 1, color: usecharger["chargerStatus"] == "AVAILABLE"? kPrimaryColor : kErrorColor),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(5))),
                                     child: Text(
-                                      documentSnapshot["chargerStatus"],
+                                      usecharger["chargerStatus"],
                                       style: TextStyle(
-                                          fontSize: 12.0, color: kPrimaryColor),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  //009
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      height: 80,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        // gradient: LinearGradient(
-                        // colors: [Colors.purple, Colors.blueAccent]),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 30.0, top: 20.0),
-                                  child: Text(
-                                    "GREY_0009",
-                                    style: TextStyle(
-                                        color: kPrimaryColor,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14.0),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 20.0, top: 5.0),
-                                  child: Text("PHITHAN_HQ"),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Spacer(),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 0.0, top: 10.0, bottom: 5.0),
-                                  child: SizedBox(
-                                    child: Icon(
-                                      Icons.electric_car_rounded,
-                                      color: kPrimaryColor,
-                                      size: 30.0,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 0.0),
-                                  child:
-                                      // ?
-                                      Container(
-                                    padding: EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 1, color: kPrimaryColor),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5))),
-                                    child: Text(
-                                      documentSnapshot1["chargerStatus"],
-                                      style: TextStyle(
-                                          fontSize: 12.0, color: kPrimaryColor),
+                                          fontSize: 12.0, color: usecharger["chargerStatus"] == "AVAILABLE"? kPrimaryColor : kErrorColor),
                                     ),
                                   ),
                                 )

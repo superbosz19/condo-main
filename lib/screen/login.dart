@@ -22,9 +22,10 @@ class Loginscreen extends StatefulWidget {
 class _LoginscreenState extends State<Loginscreen> {
   Profile profile = Profile();
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  CollectionReference _userCollection =
+      FirebaseFirestore.instance.collection("user-linecondo-A");
   final formKey = GlobalKey<FormState>();
- 
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,65 +61,67 @@ class _LoginscreenState extends State<Loginscreen> {
                 // //TextFormField(keyboardType: TextInputType.emailAddress,),
                 // input("Password", true, false, true),
                 Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 45.0, vertical: 5.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30.0),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              //controller: email,
-                              onSaved: (var email) {
-                                profile.email = email!;
-                              },
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                hintText: "E-mail",
-                                prefixIcon: Icon(
-                                  Icons.person_outline,
-                                  color: Colors.black,
-                                ),
-                                border: UnderlineInputBorder(
-                                    borderSide: BorderSide.none),
-                              ),
-                              // validator: MultiValidator([
-                              //   RequiredValidator(errorText: "Please enter your Email"),
-                              //   EmailValidator(errorText: "Please enter your Email"),
-                              // ]),
-                            ),
-                          ),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 45.0, vertical: 5.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.grey[100]),
+                    child: TextFormField(
+                      //controller: email,
+                      onSaved: (var email) {
+                        profile.email = email!;
+                      },
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: "E-mail",
+                        prefixIcon: Icon(
+                          Icons.person_outline,
+                          color: Colors.black,
                         ),
-                        //input("Password", true, false),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 45.0, vertical: 5.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30.0),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              //controller: password,
-                              onSaved: (var password) {
-                                profile.password = password!;
-                              },
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                hintText: "Password",
-                                prefixIcon: Icon(
-                                  Icons.lock_outline,
-                                  color: Colors.black,
-                                ),
-                                border: UnderlineInputBorder(
-                                    borderSide: BorderSide.none),
-                              ),
-                              // validator: MultiValidator([
-                              //   RequiredValidator(errorText: "Please enter your Password"),
-                              //   EmailValidator(errorText: "Please enter your Password"),
-                              // ]),
-                            ),
-                          ),
+                        border:
+                            UnderlineInputBorder(borderSide: BorderSide.none),
+                      ),
+                      // validator: MultiValidator([
+                      //   RequiredValidator(errorText: "Please enter your Email"),
+                      //   EmailValidator(errorText: "Please enter your Email"),
+                      // ]),
+                    ),
+                  ),
+                ),
+                //input("Password", true, false),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 45.0, vertical: 5.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.grey[100]),
+                    child: TextFormField(
+                      //controller: password,
+                      onSaved: (var password) {
+                        profile.password = password!;
+                      },
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: "Password",
+                        prefixIcon: Icon(
+                          Icons.lock_outline,
+                          color: Colors.black,
                         ),
-                        SizedBox(height: 10.0,),
+                        border:
+                            UnderlineInputBorder(borderSide: BorderSide.none),
+                      ),
+                      // validator: MultiValidator([
+                      //   RequiredValidator(errorText: "Please enter your Password"),
+                      //   EmailValidator(errorText: "Please enter your Password"),
+                      // ]),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
                 // Padding(
                 //   padding: const EdgeInsets.only(
                 //     left: 60.0,
@@ -134,22 +137,39 @@ class _LoginscreenState extends State<Loginscreen> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState?.save();
                       try {
-                        await FirebaseAuth.instance
+                        UserCredential user = await FirebaseAuth.instance
                             .signInWithEmailAndPassword(
                                 email: profile.email,
-                                password: profile.password)
-                            .then((value) {
-                          formKey.currentState!.reset();
+                                password: profile.password);
+                        formKey.currentState!.reset();
 
+                        final DocumentSnapshot userdata =
+                            await _userCollection.doc(user.user!.uid).get();
+                        print(userdata['role']);
+                        if(userdata['role'] == 'admin'){
+                          Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Viewscreen();
+                            },
+                          ),
+                        );
+                        } else {
+                          Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Viewcharger();
+                            },
+                          ),
+                        );
+                        }
 
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) {
-                            return Viewscreen();
-                          }));
-                        });
+                        
                       } on FirebaseAuthException catch (e) {
                         print(e.message);
-                        
+
                         Fluttertoast.showToast(
                             gravity: ToastGravity.CENTER,
                             msg: e.message.toString());
@@ -271,3 +291,4 @@ Widget input(String hint, bool pass, bool emailkey, bool hintpass) {
 //           context, MaterialPageRoute(builder: (context) =>Viewcharger(user)));
 //     }
 //   }
+
