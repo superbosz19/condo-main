@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/contants/constants.dart';
 import 'package:flutter_application_1/screen/login.dart';
-import 'package:flutter_application_1/screen/view_charger.dart';
+import 'package:flutter_application_1/screen/charger.dart';
 
 class Viewscreen extends StatefulWidget {
   Viewscreen({Key? key}) : super(key: key);

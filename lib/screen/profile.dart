@@ -26,11 +26,4 @@ class DataUser {
   });
 }
 
-Future<void> userSetup(var user) async {
-  CollectionReference user = FirebaseFirestore.instance.collection('user');
-  FirebaseFirestore.instance.collection("user");
-  FirebaseAuth auth = FirebaseAuth.instance;
-  var uid = auth.currentUser!.uid.toString();
-  return;
-}
 

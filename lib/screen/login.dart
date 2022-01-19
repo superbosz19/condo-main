@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/contants/constants.dart';
 import 'package:flutter_application_1/screen/profile.dart';
 import 'package:flutter_application_1/screen/register.dart';
-import 'package:flutter_application_1/screen/view_charger.dart';
-import 'package:flutter_application_1/screen/view_screen.dart';
+import 'package:flutter_application_1/screen/charger.dart';
+import 'package:flutter_application_1/screen/user_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Loginscreen extends StatefulWidget {
