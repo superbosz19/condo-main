@@ -139,9 +139,9 @@ class _ViewscreenState extends State<Viewscreen> {
                         height: 80,
                         width: 300,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Colors.white, Colors.greenAccent]),
-                          // color: Colors.white,
+                          // gradient: LinearGradient(
+                          //     colors: [Colors.white, Colors.greenAccent]),
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
@@ -161,11 +161,11 @@ class _ViewscreenState extends State<Viewscreen> {
                           children: [
                             ListTile(
                               leading: CircleAvatar(
-                                radius: 26.0,
+                                radius: 25.0,
                                 backgroundColor: kPrimaryColor,
                                 child: CircleAvatar(
                                   backgroundColor: Colors.white,
-                                  radius: 25.0,
+                                  radius: 23.0,
                                   child: FittedBox(
                                     child: Text(
                                       document["room"],
@@ -180,7 +180,10 @@ class _ViewscreenState extends State<Viewscreen> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18.0),
                               ),
-                              subtitle: Text(document["phonenumber"]),
+                              subtitle: Padding(
+                                padding: const EdgeInsets.only(top: 5.0),
+                                child: Text(document["phonenumber"]),
+                              ),
                             ),
                             Row(
                               children: [

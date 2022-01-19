@@ -147,7 +147,7 @@ class _ViewchargerState extends State<Viewcharger> {
                                   child: SizedBox(
                                     child: Icon(
                                       Icons.electric_car_rounded,
-                                      color: kPrimaryColor,
+                                      color: usecharger["chargerStatus"] == "AVAILABLE"? kPrimaryColor : kErrorColor,
                                       size: 30.0,
                                     ),
                                   ),
