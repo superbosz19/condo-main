@@ -22,7 +22,7 @@ class Loginscreen extends StatefulWidget {
 class _LoginscreenState extends State<Loginscreen> {
   Profile profile = Profile();
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  CollectionReference _userCollection =
+  final CollectionReference _userCollection =
       FirebaseFirestore.instance.collection("user-linecondo-A");
   final formKey = GlobalKey<FormState>();
 
@@ -47,7 +47,7 @@ class _LoginscreenState extends State<Loginscreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 55.0, top: 200.0),
+                  padding: const EdgeInsets.only(left: 55.0, top: 350.0),
                   child: Text(
                     'Log in',
                     style:
