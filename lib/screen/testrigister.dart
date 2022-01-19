@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/contants/constants.dart';
+import 'package:flutter_application_1/constants/constants.dart';
 import 'package:flutter_application_1/screen/login.dart';
 
 class Registerscreen1 extends StatefulWidget {
