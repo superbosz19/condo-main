@@ -43,40 +43,42 @@ class AppBarScreen extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       // ignore: prefer_const_constructors
       leading: SizedBox(
-          width: 200,
-          height: 200,
-          child: IconButton(
-            padding: const EdgeInsets.all(7.5),
-            icon: Image.asset(
-              'assets/images/logo p.png',
-              height: 700.0,
-              width: 700.0,
-            ),
-            onPressed: () {
-              Navigator.pop(
-                context,
-              );
-            },
-          )),
+        width: 200,
+        height: 200,
+        child: IconButton(
+          padding: const EdgeInsets.all(7.5),
+          icon: Image.asset(
+            'assets/images/logo p.png',
+            height: 700.0,
+            width: 700.0,
+          ),
+          onPressed: () {
+            Navigator.pop(
+              context,
+            );
+          },
+        ),
+      ),
       backgroundColor: Colors.white,
       actions: [
         SizedBox(
-            width: 50,
-            height: 100,
-            child: IconButton(
-              onPressed: () {
-                auth.signOut().then(
-                      (value) => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return Loginscreen();
-                        }),
-                      ),
-                    );
-              },
-              icon: Icon(Icons.logout_outlined),
-              color: kPrimaryColor,
-            ))
+          width: 50,
+          height: 100,
+          child: IconButton(
+            onPressed: () {
+              auth.signOut().then(
+                    (value) => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return Loginscreen();
+                      }),
+                    ),
+                  );
+            },
+            icon: Icon(Icons.logout_outlined),
+            color: kPrimaryColor,
+          ),
+        ),
       ],
     );
   }

@@ -80,7 +80,7 @@ class _ViewscreenState extends State<Viewscreen> {
                           context,
                           MaterialPageRoute(builder: (context) {
                             return Viewcharger();
-                          }),
+                          },),
                         );
                       },
                       child: Container(

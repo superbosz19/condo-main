@@ -146,27 +146,25 @@ class _LoginscreenState extends State<Loginscreen> {
                         final DocumentSnapshot userdata =
                             await _userCollection.doc(user.user!.uid).get();
                         print(userdata['role']);
-                        if(userdata['role'] == 'admin'){
+                        if (userdata['role'] == 'admin') {
                           Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Viewscreen();
-                            },
-                          ),
-                        );
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return Viewscreen();
+                              },
+                            ),
+                          );
                         } else {
                           Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Viewcharger();
-                            },
-                          ),
-                        );
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return Viewcharger();
+                              },
+                            ),
+                          );
                         }
-
-                        
                       } on FirebaseAuthException catch (e) {
                         print(e.message);
 
@@ -282,13 +280,4 @@ Widget input(String hint, bool pass, bool emailkey, bool hintpass) {
     ),
   );
 }
-
-// Future checkAuth(BuildContext context) async {
-//     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-//     if (user != null) {
-//       print("Already singed-in with");
-//       Navigator.pushReplacement(
-//           context, MaterialPageRoute(builder: (context) =>Viewcharger(user)));
-//     }
-//   }
 

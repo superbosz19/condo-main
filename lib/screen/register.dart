@@ -230,21 +230,27 @@ class _RegisterscreenState extends State<Registerscreen> {
                                         password: profile.password);
                                 print(user.user!.uid);
 
-                                _userCollection.doc(user.user!.uid).set({
-                                  "role": mydatauser.role,
-                                  "username": mydatauser.username,
-                                  "room": mydatauser.roomuser,
-                                  "phonenumber": mydatauser.phonenumber
-                                });
+                                _userCollection.doc(user.user!.uid).set(
+                                  {
+                                    "role": mydatauser.role,
+                                    "username": mydatauser.username,
+                                    "room": mydatauser.roomuser,
+                                    "phonenumber": mydatauser.phonenumber
+                                  },
+                                );
 
                                 formKey.currentState?.reset();
                                 Fluttertoast.showToast(
                                     msg: "Successfully",
                                     gravity: ToastGravity.TOP);
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return Loginscreen();
-                                }));
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Loginscreen();
+                                    },
+                                  ),
+                                );
                               } on FirebaseAuthException catch (e) {
                                 print(e.code);
                                 String message;
