@@ -67,66 +67,42 @@ class _ViewscreenState extends State<Viewscreen> {
               child: CircularProgressIndicator(),
             );
           }
-          return 
-          Column(
+          return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return Viewcharger();
-                          },),
-                        );
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Viewcharger();
                       },
-                      child: Container(
-                        height: 40,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          // gradient: LinearGradient(
-                          //     colors: [Colors.white, Colors.greenAccent]),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Charger",
-                                style: TextStyle(
-                                    color: kPrimaryColor,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Spacer(),
-                            Icon(Icons.arrow_forward_ios_rounded),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                          ],
-                        ),
-                      ),
                     ),
-                  ],
+                  );
+                },
+                child: Container(
+                  child: Image.asset(
+                    "assets/images/Charger-Status.png",
+                  ),
+                  // decoration: BoxDecoration(
+                  //   color: Colors.white,
+                  //   // gradient: LinearGradient(
+                  //   //     colors: [Colors.white, Colors.greenAccent]),
+                  //   borderRadius: BorderRadius.only(
+                  //       topLeft: Radius.circular(10),
+                  //       topRight: Radius.circular(10),
+                  //       bottomLeft: Radius.circular(10),
+                  //       bottomRight: Radius.circular(10)),
+                  //   boxShadow: [
+                  //     BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.5),
+                  //       spreadRadius: 5,
+                  //       blurRadius: 7,
+                  //       offset:
+                  //           Offset(0, 3), // changes position of shadow
+                  //     ),
+                  //   ],
+                  // ),
                 ),
               ),
               Expanded(
@@ -136,7 +112,7 @@ class _ViewscreenState extends State<Viewscreen> {
                     return Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
-                        height: 80,
+                        height: 100,
                         width: 300,
                         decoration: BoxDecoration(
                           // gradient: LinearGradient(
@@ -159,32 +135,69 @@ class _ViewscreenState extends State<Viewscreen> {
                         ),
                         child: Stack(
                           children: [
-                            ListTile(
-                              leading: CircleAvatar(
-                                radius: 25.0,
-                                backgroundColor: kPrimaryColor,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  radius: 23.0,
-                                  child: FittedBox(
-                                    child: Text(
-                                      document["room"],
-                                      style: TextStyle(color: kPrimaryColor),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start, 
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0,top: 10.0),
+                                  child: Container(
+                                    //height: 40,
+                                    
+                                    decoration: BoxDecoration(
+                                      color: kPrimaryColor,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10),
+                                          bottomLeft: Radius.circular(10),
+                                          bottomRight: Radius.circular(10)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Room: " + document["room"],
+                                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              title: Text(
-                                document["username"],
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18.0),
-                              ),
-                              subtitle: Padding(
-                                padding: const EdgeInsets.only(top: 5.0),
-                                child: Text(document["phonenumber"]),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 18.0,top: 5.0),
+                                  child: Text(
+                                    "Name: " + document["username"],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 18.0,top: 5.0),
+                                  child: Text("Tel: " + document["phonenumber"]),
+                                ),
+                              ],
                             ),
+                            // ListTile(
+                            //   leading: CircleAvatar(
+                            //     radius: 25.0,
+                            //     backgroundColor: kPrimaryColor,
+                            //     child: CircleAvatar(
+                            //       backgroundColor: Colors.white,
+                            //       radius: 23.0,
+                            //       child: FittedBox(
+                            //         child: Text(
+                            //           document["room"],
+                            //           style: TextStyle(color: kPrimaryColor),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            //   title: Text(
+                            //     document["username"],
+                            //     style: TextStyle(
+                            //         fontWeight: FontWeight.bold,
+                            //         fontSize: 18.0),
+                            //   ),
+                            //   subtitle: Padding(
+                            //     padding: const EdgeInsets.only(top: 5.0),
+                            //     child: Text(document["phonenumber"]),
+                            //   ),
+                            // ),
                             Row(
                               children: [
                                 Spacer(),
@@ -193,7 +206,7 @@ class _ViewscreenState extends State<Viewscreen> {
                                   child: IconButton(
                                       icon: Icon(
                                         Icons.delete_rounded,
-                                        color: Colors.red[300],
+                                        color: Colors.grey,size: 18,
                                       ),
                                       onPressed: () {}),
                                 ),
