@@ -28,6 +28,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: const Loginscreen(),
+      theme:  new ThemeData(
+        fontFamily: 'AvenirNext',
+      ),
     );
   }
 }

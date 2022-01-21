@@ -118,7 +118,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                               decoration: InputDecoration(
                                 hintText: "E-mail",
                                 prefixIcon: Icon(
-                                  Icons.person_outline,
+                                  Icons.email_outlined,
                                   color: Colors.black,
                                 ),
                                 border: UnderlineInputBorder(
@@ -178,7 +178,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                               decoration: InputDecoration(
                                 hintText: "Room No.",
                                 prefixIcon: Icon(
-                                  Icons.person_outline,
+                                  Icons.door_front_door_outlined,
                                   color: Colors.black,
                                 ),
                                 border: UnderlineInputBorder(
@@ -204,7 +204,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                               decoration: InputDecoration(
                                 hintText: "Phone number",
                                 prefixIcon: Icon(
-                                  Icons.person_outline,
+                                  Icons.phone,
                                   color: Colors.black,
                                 ),
                                 border: UnderlineInputBorder(

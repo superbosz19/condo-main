@@ -114,16 +114,15 @@ class _ViewchargerState extends State<Viewcharger> {
                         children: [
                           Expanded(
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      right: 30.0, top: 20.0),
+                                      left: 20.0, top: 20.0),
                                   child: Text(
-                                    usecharger["chargerID"],
+                                    "ALFEN " + usecharger["chargerID"],
                                     style: TextStyle(
-                                        color: kPrimaryColor,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14.0),
+                                        color: kPrimaryColor, fontSize: 14.0),
                                   ),
                                 ),
                                 SizedBox(
@@ -131,7 +130,7 @@ class _ViewchargerState extends State<Viewcharger> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      right: 20.0, top: 5.0),
+                                      left: 20.0, top: 5.0),
                                   child: Text(usecharger["locationID"]),
                                 ),
                               ],
@@ -147,7 +146,10 @@ class _ViewchargerState extends State<Viewcharger> {
                                   child: SizedBox(
                                     child: Icon(
                                       Icons.electric_car_rounded,
-                                      color: usecharger["chargerStatus"] == "AVAILABLE"? kPrimaryColor : kErrorColor,
+                                      color: usecharger["chargerStatus"] ==
+                                              "AVAILABLE"
+                                          ? kPrimaryColor
+                                          : Colors.grey,
                                       size: 30.0,
                                     ),
                                   ),
@@ -159,17 +161,23 @@ class _ViewchargerState extends State<Viewcharger> {
                                       Container(
                                     padding: EdgeInsets.all(5),
                                     decoration: BoxDecoration(
+                                        color: usecharger["chargerStatus"] ==
+                                                "AVAILABLE"
+                                            ? kPrimaryColor
+                                            : Colors.grey,
                                         border: Border.all(
-                                            width: 1, color: usecharger["chargerStatus"] == "AVAILABLE"? kPrimaryColor : kErrorColor),
+                                            width: 1, color: Colors.white),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(5))),
                                     child: Text(
-                                      usecharger["chargerStatus"],
+                                      usecharger["chargerStatus"] == "OCCUPIED"
+                                          ? "UNAVAILBLE"
+                                          : "AVAILBLE",
                                       style: TextStyle(
-                                          fontSize: 12.0, color: usecharger["chargerStatus"] == "AVAILABLE"? kPrimaryColor : kErrorColor),
+                                          fontSize: 12.0, color: Colors.white),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           )
