@@ -1,6 +1,4 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors, duplicate_ignore
-
-import 'package:auth/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -145,6 +143,7 @@ class _LoginscreenState extends State<Loginscreen> {
 
                         final DocumentSnapshot userdata =
                             await _userCollection.doc(user.user!.uid).get();
+                        // ignore: avoid_print
                         print(userdata['role']);
                         if (userdata['role'] == 'admin') {
                           Navigator.pushReplacement(
@@ -166,6 +165,7 @@ class _LoginscreenState extends State<Loginscreen> {
                           );
                         }
                       } on FirebaseAuthException catch (e) {
+                        // ignore: avoid_print
                         print(e.message);
 
                         Fluttertoast.showToast(

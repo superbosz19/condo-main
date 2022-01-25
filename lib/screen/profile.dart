@@ -1,18 +1,14 @@
-import 'package:auth/auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables, duplicate_ignore
 
 class Profile {
-  // ignore: prefer_typing_uninitialized_variables
   var email;
-  // ignore: prefer_typing_uninitialized_variables
   var password;
 
   Profile({this.email, this.password});
 }
 
 class DataUser {
+  // ignore: prefer_typing_uninitialized_variables
   var role;
   var username;
   var roomuser;
