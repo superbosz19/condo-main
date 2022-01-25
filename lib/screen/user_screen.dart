@@ -6,7 +6,7 @@ import 'package:flutter_application_1/screen/login.dart';
 import 'package:flutter_application_1/screen/charger.dart';
 
 class Viewscreen extends StatefulWidget {
-  Viewscreen({Key? key}) : super(key: key);
+  const Viewscreen({Key? key}) : super(key: key);
 
   @override
   _ViewscreenState createState() => _ViewscreenState();
@@ -14,6 +14,7 @@ class Viewscreen extends StatefulWidget {
 
 class _ViewscreenState extends State<Viewscreen> {
   final auth = FirebaseAuth.instance;
+  // ignore: annotate_overrides
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -45,12 +46,14 @@ class _ViewscreenState extends State<Viewscreen> {
                         (value) => Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return Loginscreen();
+                            return const Loginscreen();
                           }),
                         ),
                       );
+                      // ignore: avoid_print
+                      print("Logout");
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.logout_outlined,
                 ),
                 color: kPrimaryColor,
@@ -63,7 +66,7 @@ class _ViewscreenState extends State<Viewscreen> {
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -80,6 +83,7 @@ class _ViewscreenState extends State<Viewscreen> {
                     ),
                   );
                 },
+                // ignore: avoid_unnecessary_containers
                 child: Container(
                   child: Image.asset(
                     "assets/images/Charger-Status.png",
@@ -118,7 +122,7 @@ class _ViewscreenState extends State<Viewscreen> {
                           // gradient: LinearGradient(
                           //     colors: [Colors.white, Colors.greenAccent]),
                           color: Colors.white,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
                               bottomLeft: Radius.circular(10),
@@ -129,7 +133,7 @@ class _ViewscreenState extends State<Viewscreen> {
                               spreadRadius: 5,
                               blurRadius: 7,
                               offset:
-                                  Offset(0, 3), // changes position of shadow
+                                  const Offset(0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -143,7 +147,7 @@ class _ViewscreenState extends State<Viewscreen> {
                                   child: Container(
                                     //height: 40,
                                     
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(10),
@@ -155,7 +159,7 @@ class _ViewscreenState extends State<Viewscreen> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         "Room: " + document["room"],
-                                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                                        style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                   ),
@@ -200,11 +204,11 @@ class _ViewscreenState extends State<Viewscreen> {
                             // ),
                             Row(
                               children: [
-                                Spacer(),
+                                const Spacer(),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: IconButton(
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.delete_rounded,
                                         color: Colors.grey,size: 18,
                                       ),

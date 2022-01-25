@@ -7,7 +7,7 @@ import 'package:flutter_application_1/screen/login.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
+    options: const FirebaseOptions(
       apiKey: "AIzaSyCc_AHbw04kfodsawgTPHgyeHu2tDYkEQI", // Your apiKey
       appId: "1:570129048847:web:5f1c8792e2e2d84f9e4a7a", // Your appId
       messagingSenderId: "570129048847", // Your messagingSenderId
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: const Loginscreen(),
+      // ignore: unnecessary_new
       theme:  new ThemeData(
         fontFamily: 'AvenirNext',
       ),
@@ -36,9 +37,11 @@ class MyApp extends StatelessWidget {
 }
 
 class AppBarScreen extends StatelessWidget with PreferredSizeWidget {
+  @override
   final Size preferredSize;
 
-  AppBarScreen() : preferredSize = Size.fromHeight(56.0);
+  // ignore: prefer_const_constructors
+  AppBarScreen({Key? key}) : preferredSize = Size.fromHeight(56.0), super(key: key);
   final auth = FirebaseAuth.instance;
 
   @override
@@ -73,12 +76,12 @@ class AppBarScreen extends StatelessWidget with PreferredSizeWidget {
                     (value) => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return Loginscreen();
+                        return const Loginscreen();
                       }),
                     ),
                   );
             },
-            icon: Icon(Icons.logout_outlined),
+            icon: const Icon(Icons.logout_outlined),
             color: kPrimaryColor,
           ),
         ),

@@ -5,6 +5,7 @@ import 'package:flutter_application_1/constants/constants.dart';
 import 'package:flutter_application_1/screen/login.dart';
 
 class Viewcharger extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
   Viewcharger({Key? key}) : super(key: key);
 
   @override
@@ -46,12 +47,14 @@ class _ViewchargerState extends State<Viewcharger> {
                       (value) => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) {
-                          return Loginscreen();
+                          return const Loginscreen();
                         }),
                       ),
                     );
+                // ignore: avoid_print
+                print("Logout");
               },
-              icon: Icon(Icons.logout_outlined),
+              icon: const Icon(Icons.logout_outlined),
               color: kPrimaryColor,
             ),
           ),
@@ -61,7 +64,7 @@ class _ViewchargerState extends State<Viewcharger> {
         stream: FirebaseFirestore.instance.collection("chargers").snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -90,13 +93,13 @@ class _ViewchargerState extends State<Viewcharger> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      height: 80,
+                      height: 100,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         // gradient: LinearGradient(
                         // colors: [Colors.purple, Colors.blueAccent]),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10),
                             bottomLeft: Radius.circular(10),
@@ -106,7 +109,7 @@ class _ViewchargerState extends State<Viewcharger> {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                            offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
                       ),
@@ -121,11 +124,11 @@ class _ViewchargerState extends State<Viewcharger> {
                                       left: 20.0, top: 20.0),
                                   child: Text(
                                     "ALFEN " + usecharger["chargerID"],
-                                    style: TextStyle(
-                                        color: kPrimaryColor, fontSize: 14.0),
+                                    style: const TextStyle(
+                                        color: kPrimaryColor, fontSize: 14.0,fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5.0,
                                 ),
                                 Padding(
@@ -136,7 +139,7 @@ class _ViewchargerState extends State<Viewcharger> {
                               ],
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Expanded(
                             child: Column(
                               children: [
@@ -159,7 +162,7 @@ class _ViewchargerState extends State<Viewcharger> {
                                   child:
                                       // ?
                                       Container(
-                                    padding: EdgeInsets.all(5),
+                                    padding: const EdgeInsets.only(top: 5.0, bottom: 5.0, left: 10.0, right: 10.0),
                                     decoration: BoxDecoration(
                                         color: usecharger["chargerStatus"] ==
                                                 "AVAILABLE"
@@ -167,14 +170,14 @@ class _ViewchargerState extends State<Viewcharger> {
                                             : Colors.grey,
                                         border: Border.all(
                                             width: 1, color: Colors.white),
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(5))),
                                     child: Text(
                                       usecharger["chargerStatus"] == "OCCUPIED"
                                           ? "UNAVAILBLE"
                                           : "AVAILBLE",
-                                      style: TextStyle(
-                                          fontSize: 12.0, color: Colors.white),
+                                      style: const TextStyle(
+                                          fontSize: 12.0, color: Colors.white,fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ),
